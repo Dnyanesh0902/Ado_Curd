@@ -1,0 +1,16 @@
+﻿@model MachineTest.Models.Category
+@{
+    ViewBag.Title = "Create Category";
+}
+
+<h2>Create Category</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label>Category Name</label>
+        @Html.TextBoxFor(m => m.CategoryName, new {  @class = "form-control"})
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    @Html.ActionLink("Back to List", "Index", null, new {@class = "btn btn-secondary" })
+}

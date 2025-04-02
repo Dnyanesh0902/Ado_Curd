@@ -1,0 +1,48 @@
+﻿@model List<MachineTest.Models.Product>
+
+@{
+    ViewBag.Title = "Product List";
+}
+
+<h2>Product List</h2>
+<p>
+    @Html.ActionLink("Create New Product", "Create")
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Category ID</th>
+            <th>Category Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.CategoryId</td>
+                <td>@item.CategoryName</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a href="@Url.Action("Index", new { pageNumber = 1 })">First</a>
+    <a href="@Url.Action("Index", new { pageNumber = ViewBag.PageNumber - 1 })">Previous</a>
+    <a href="@Url.Action("Index", new { pageNumber = ViewBag.PageNumber + 1 })">Next</a>
+    <a href="@Url.Action("Index", new { pageNumber = ViewBag.TotalPages })">Last</a>
+</div>
+<div>
+    @Html.ActionLink("Go to Category", "Index", "MachineTest", null, new { @class = "btn btn-primary" })
+</div>

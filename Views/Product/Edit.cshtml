@@ -1,0 +1,25 @@
+﻿@model MachineTest.Models.Product
+
+@{
+    ViewBag.Title = "Edit Product";
+}
+
+<h2>Edit Product</h2>
+
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.ProductId)
+
+    <div class="form-group">
+        <label>Product Name</label>
+        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label>Category</label>
+        @Html.DropDownListFor(m => m.CategoryId, ViewBag.Categories as SelectList, "-- Select Category --", new { @class = "form-control", required = "required" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+}
