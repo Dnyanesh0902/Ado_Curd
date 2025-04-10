@@ -1,27 +1,30 @@
 ﻿@model MachineTest.Models.Category
+
 @{
     ViewBag.Title = "Edit Category";
 }
 
-<!DOCTYPE html>
+<link href="~/Content/bootstrap.css" rel="stylesheet">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
-    <h2>Edit Category</h2>
-    @using (Html.BeginForm())
+<div class="container mt-5">
+    <div class="card shadow rounded-3">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Edit Category</h2>
+
+            @using (Html.BeginForm())
             {
                 @Html.HiddenFor(m => m.CategoryId)
-            
-                <div class="form-group">
-                    <label>Category Name</label>
-                    @Html.TextBoxFor(m => m.CategoryName, new  {  @class ="form-control"})
+
+                <div class="form-group mb-3">
+                    <label class="form-label">Category Name</label>
+                    @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control", required = "required" })
                 </div>
-                <button type="submit" class="btn btn-primary">Update</button>
-                @Html.ActionLink("Back To List", "Index", null, new {@class= "btn btn-secondary"})
+
+                <div class="d-flex justify-content-center gap-3">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    @Html.ActionLink("Back To List", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
             }
-</body>
-</html>
+        </div>
+    </div>
+</div>

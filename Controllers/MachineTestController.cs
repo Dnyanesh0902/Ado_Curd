@@ -18,7 +18,7 @@ namespace MachineTest.Controllers
         }
         public ActionResult Details(int id)
         {
-            var response =obj.GetCategories().Single(a => a.CategoryId == id);
+            var response = obj.GetCategories().Single(a => a.CategoryId == id);
             return View(response);
         }
         public ActionResult Create()

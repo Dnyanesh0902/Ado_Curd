@@ -1,36 +1,47 @@
-﻿
-@model List<MachineTest.Models.Category>
+﻿@model List<MachineTest.Models.Category>
+
 @{
     ViewBag.Title = "Category List";
 }
-<h2>Category List</h2>
-<p>
-    @Html.ActionLink("Create New Category", "Create")
-</p>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Category ID</th>
-            <th>Category Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.CategoryId</td>
-                <td>@item.CategoryName</td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<link href="~/Content/bootstrap.css" rel="stylesheet">
 
-<div>
-    @Html.ActionLink("Go to Products", "Index", "Product", null, new { @class = "btn btn-primary" })
+<div class="container mt-5">
+    <div class="card shadow rounded-3">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Category List</h2>
+
+            <div class="mb-3 text-end">
+                @Html.ActionLink("Create New Category", "Create", null, new { @class = "btn btn-success" })
+            </div>
+
+            <table class="table table-bordered table-striped">
+                <thead class="table-light">
+                    <tr>
+                        <th>Category ID</th>
+                        <th>Category Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CategoryId</td>
+                            <td>@item.CategoryName</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }, new { @class = "btn btn-warning btn-sm me-1" })
+                                @Html.ActionLink("Details", "Details", new { id = item.CategoryId }, new { @class = "btn btn-info btn-sm me-1" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId }, new { @class = "btn btn-danger btn-sm" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="text-center mt-3">
+                @Html.ActionLink("Go to Products", "Index", "Product", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
 </div>

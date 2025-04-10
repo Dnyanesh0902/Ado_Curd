@@ -4,21 +4,32 @@
     ViewBag.Title = "Delete Product";
 }
 
-<h2>Delete Product</h2>
+<link href="~/Content/bootstrap.css" rel="stylesheet">
 
-<h4>Are you sure you want to delete this product?</h4>
-<dl class="dl-horizontal">
-    <dt>Product Name:</dt>
-    <dd>@Model.ProductName</dd>
+<div class="container mt-5">
+    <div class="card shadow rounded-3">
+        <div class="card-body">
+            <h2 class="card-title text-center text-danger mb-4">Delete Product</h2>
 
-    <dt>Category Name:</dt>
-    <dd>@Model.CategoryName</dd>
-</dl>
+            <h5 class="text-center mb-4">Are you sure you want to delete this product?</h5>
 
-@using (Html.BeginForm("Delete", "Product", FormMethod.Post))
-{
-    @Html.HiddenFor(m => m.ProductId)
+            <dl class="row">
+                <dt class="col-sm-3">Product Name:</dt>
+                <dd class="col-sm-9">@Model.ProductName</dd>
 
-    <button type="submit" class="btn btn-danger">Delete</button>
-    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
-}
+                <dt class="col-sm-3">Category Name:</dt>
+                <dd class="col-sm-9">@Model.CategoryName</dd>
+            </dl>
+
+            @using (Html.BeginForm("Delete", "Product", FormMethod.Post))
+            {
+                @Html.HiddenFor(m => m.ProductId)
+
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
